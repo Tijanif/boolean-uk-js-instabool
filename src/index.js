@@ -1,84 +1,83 @@
 // write your code here
 
-const imgageContainer = document.querySelector('.image-container')
+const imgageContainer = document.querySelector('.image-container');
 
 fetch('http://localhost:3000/images')
- .then(function (promise){
-  let data =  promise.json()
-  return data
- })
- .then(function (data){
-   for(const item of data){
-    imgageContainer.append(cardFunction(item))
-   }
-  
- })
-
-
+  .then(function (promise) {
+    let data = promise.json();
+    return data;
+  })
+  .then(function (data) {
+    for (const item of data) {
+      imgageContainer.append(cardFunction(item));
+    }
+  });
 
 // card
-function cardFunction (item) {
-      // Article section
-      const article = document.createElement('article')
-      article.classList ='image-card'
-      
-      // h2
-      const h2 = document.createElement('h2')
-      h2.classList = item.title
+function cardFunction(item) {
+  // Article section
+  const article = document.createElement('article');
+  article.classList = 'image-card';
 
-      //image
-      const image = document.createElement('img')
-      image.src = item.image
-      image.classList = 'image'
+  // h2
+  const h2 = document.createElement('h2');
+  h2.classList = item.title;
 
-      // div section
-      const divSectionLikes = document.createElement('div')
-      divSectionLikes.classList = 'likes-section'
+  //image
+  const image = document.createElement('img');
+  image.src = item.image;
+  image.classList = 'image';
 
-      // div section children
-      const divSpan = document.createElement('span')
-      divSpan.classList = item.likes
+  // div section
+  const divSectionLikes = document.createElement('div');
+  divSectionLikes.classList = 'likes-section';
 
-      const divButton = document.createElement('button')
-      divButton.classList = 'likes-button'
-      divButton.innerText = '♥'
+  // div section children
+  const divSpan = document.createElement('span');
+  divSpan.classList = item.likes;
 
-      divSectionLikes.append(divSpan, divButton)
+  const divButton = document.createElement('button');
+  divButton.classList = 'likes-button';
+  divButton.innerText = '♥';
 
-      // Ul section
-      const ulSection = document.createElement('ul')
-      ulSection.classList = 'comments'
+  divSectionLikes.append(divSpan, divButton);
 
-      const ulLiEl = document.createElement('li')
-      ulLiEl.innerText = item.comments[0].content
-      //  const ulLiEl2 = document.createElement('li')
-      // ulLiEl.innerText = item.comments[1].content
-      //  const ulLiEl3 = document.createElement('li')
-      // ulLiEl.innerText = item.comments[2].content
+  // Ul section
+  const ulSection = document.createElement('ul');
+  ulSection.classList = 'comments';
 
-      ulSection.append(ulLiEl)
+  // ulLiEl.innerText = item.comments[0].content
+  //  const li2 = document.createElement('li')
+  // li2.innerText = item.comments[1].content
+  //  const li3 = document.createElement('li')
 
-      // form
-      const formSection = document.createElement('form')
-      formSection.classList = 'comment-form'
+  for (const comment of item.comments) {
+    console.log(comment.content);
+    const listElement = document.createElement('li');
+    listElement.innerText = comment.content;
+    ulSection.append(listElement);
+  }
 
-      // form intput
-      const formInput = document.createElement('input')
-      formInput.classList = 'comment-input'
-      formInput.setAttribute('type', 'text')
-      formInput.setAttribute('name', 'comment')
-      formInput.setAttribute('placeholder', "Add a comment...")
+  // form
+  const formSection = document.createElement('form');
+  formSection.classList = 'comment-form';
 
-      // form button
-      const formBotton = document.createElement('button')
-      formBotton.setAttribute('class', 'comment-botton')
-      formBotton.setAttribute('type', 'submit')
-      formBotton.innerText = 'Post'
+  // form intput
+  const formInput = document.createElement('input');
+  formInput.classList = 'comment-input';
+  formInput.setAttribute('type', 'text');
+  formInput.setAttribute('name', 'comment');
+  formInput.setAttribute('placeholder', 'Add a comment...');
 
-      formSection.append(formInput, formBotton)
+  // form button
+  const formBotton = document.createElement('button');
+  formBotton.setAttribute('class', 'comment-botton');
+  formBotton.setAttribute('type', 'submit');
+  formBotton.innerText = 'Post';
 
-      article.append(h2, image,divSectionLikes, ulSection, formSection )
-      
-      return article
+  formSection.append(formInput, formBotton);
 
+  article.append(h2, image, divSectionLikes, ulSection, formSection);
+
+  return article;
 }
