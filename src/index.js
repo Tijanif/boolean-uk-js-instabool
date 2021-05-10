@@ -46,13 +46,7 @@ function cardFunction(item) {
   const ulSection = document.createElement('ul');
   ulSection.classList = 'comments';
 
-  // ulLiEl.innerText = item.comments[0].content
-  //  const li2 = document.createElement('li')
-  // li2.innerText = item.comments[1].content
-  //  const li3 = document.createElement('li')
-
   for (const comment of item.comments) {
-    console.log(comment.content);
     const listElement = document.createElement('li');
     listElement.innerText = comment.content;
     ulSection.append(listElement);
