@@ -1,30 +1,34 @@
 // write your code here
 
-const imageCardContainer = document.querySelector(".image-container")
+const imgageContainer = document.querySelector('.image-container')
 
-fetch("http://localhost:3000/images")
-.then(function(promise){
- let array = promise.json()
- return array
-}).then(function (array){
+fetch('http://localhost:3000/images')
+ .then(function (promise){
+  let data =  promise.json()
+  return data
+ })
+ .then(function (data){
+   for(const item of data){
+    imgageContainer.append(cardFunction(item))
+   }
+  
+ })
 
- 
 
-})
 
 // card
-function card () {
+function cardFunction (item) {
       // Article section
       const article = document.createElement('article')
       article.classList ='image-card'
       
       // h2
       const h2 = document.createElement('h2')
-      h2.classList = 'title'
+      h2.classList = item.title
 
       //image
       const image = document.createElement('img')
-      image.src = ''
+      image.src = item.image
       image.classList = 'image'
 
       // div section
@@ -33,7 +37,7 @@ function card () {
 
       // div section children
       const divSpan = document.createElement('span')
-      divSpan.classList = 'likes'
+      divSpan.classList = item.likes
 
       const divButton = document.createElement('button')
       divButton.classList = 'likes-button'
@@ -46,7 +50,11 @@ function card () {
       ulSection.classList = 'comments'
 
       const ulLiEl = document.createElement('li')
-      ulLiEl.innerText = 'Get rid of these comments'
+      ulLiEl.innerText = item.comments[0].content
+      //  const ulLiEl2 = document.createElement('li')
+      // ulLiEl.innerText = item.comments[1].content
+      //  const ulLiEl3 = document.createElement('li')
+      // ulLiEl.innerText = item.comments[2].content
 
       ulSection.append(ulLiEl)
 
@@ -69,6 +77,8 @@ function card () {
 
       formSection.append(formInput, formBotton)
 
-      article.append(h2, image,divSectionLikes, formSection )
+      article.append(h2, image,divSectionLikes, ulSection, formSection )
       
+      return article
+
 }
