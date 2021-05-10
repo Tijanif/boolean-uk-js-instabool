@@ -7,34 +7,13 @@ fetch("http://localhost:3000/images")
  let array = promise.json()
  return array
 }).then(function (array){
- // console.log(array)
+
+ 
+
 })
 
 // card
-
-      /* <article class="image-card">
-        <h2 class="title">Title of image goes here</h2>
-        <img src="./assets/image-placeholder.jpg" class="image" />
-        <div class="likes-section">
-          <span class="likes">0 likes</span>
-          <button class="like-button">♥</button>
-        </div>
-        <ul class="comments">
-          <li>Get rid of these comments</li>
-          <li>And replace them with the real ones</li>
-          <li>From the server</li>
-        </ul>
-        <form class="comment-form">
-          <input
-            class="comment-input"
-            type="text"
-            name="comment"
-            placeholder="Add a comment..."
-          />
-          <button class="comment-button" type="submit">Post</button>
-        </form>
-      </article> */
-
+function card () {
       // Article section
       const article = document.createElement('article')
       article.classList ='image-card'
@@ -70,3 +49,26 @@ fetch("http://localhost:3000/images")
       ulLiEl.innerText = 'Get rid of these comments'
 
       ulSection.append(ulLiEl)
+
+      // form
+      const formSection = document.createElement('form')
+      formSection.classList = 'comment-form'
+
+      // form intput
+      const formInput = document.createElement('input')
+      formInput.classList = 'comment-input'
+      formInput.setAttribute('type', 'text')
+      formInput.setAttribute('name', 'comment')
+      formInput.setAttribute('placeholder', "Add a comment...")
+
+      // form button
+      const formBotton = document.createElement('button')
+      formBotton.setAttribute('class', 'comment-botton')
+      formBotton.setAttribute('type', 'submit')
+      formBotton.innerText = 'Post'
+
+      formSection.append(formInput, formBotton)
+
+      article.append(h2, image,divSectionLikes, formSection )
+      
+}
