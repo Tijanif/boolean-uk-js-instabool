@@ -34,7 +34,8 @@ function cardFunction(item) {
 
   // div section children
   const divSpan = document.createElement('span');
-  divSpan.classList = item.likes;
+  divSpan.classList = 'likes';
+  divSpan.innerText = item.likes;
 
   const divButton = document.createElement('button');
   divButton.classList = 'likes-button';
