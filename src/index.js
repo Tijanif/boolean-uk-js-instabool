@@ -85,8 +85,6 @@ function createLikesSection(imageData) {
   const divEl = document.createElement('div');
   divEl.setAttribute('class', 'likes-section');
 
-  console.log('LOIKES SECTIN:', imageData.likes);
-
   const likesEl = document.createElement('span');
   likesEl.setAttribute('class', 'likes');
   likesEl.innerText = `${imageData.likes} likes`;
@@ -99,8 +97,6 @@ function createLikesSection(imageData) {
 
   likeBtn.addEventListener('click', function (e) {
     e.preventDefault();
-
-    console.log('EVNT SECTIN:', imageData.likes);
 
     fetch(`http://localhost:3000/images/${imageData.id}`, {
       method: 'PATCH',
@@ -173,9 +169,10 @@ function createSingleCard(imageData) {
     e.preventDefault();
     let id = imageData.id;
     const commentToCreate = {
-      content: formSection.input.value,
+      content: formInput.value,
       imageId: id,
     };
+
     fetch(`http://localhost:3000/comments`, {
       method: 'POST',
       headers: {
@@ -190,7 +187,7 @@ function createSingleCard(imageData) {
         getImages();
       });
 
-    imageForm.reset();
+    formSection.reset();
   });
 
   deleteBtn.addEventListener('click', function () {
@@ -225,7 +222,7 @@ function listenToAddImagesForm() {
       .then(function (resp) {
         return resp.json();
       })
-      .then(function (imageData) {
+      .then(function () {
         getImages();
         // createSingleCard(imageData);
       });

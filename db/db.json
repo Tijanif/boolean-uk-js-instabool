@@ -3,20 +3,14 @@
     {
       "id": 1,
       "title": "Coder dog",
-      "likes": 9,
+      "likes": 10,
       "image": "./assets/coder-dog.png"
     },
     {
       "id": 2,
       "title": "Coder cats",
-      "likes": 5,
+      "likes": 6,
       "image": "./assets/coder-cat.jpeg"
-    },
-    {
-      "title": "Besanji",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Basenji_Profile_%28loosercrop%29.jpg/220px-Basenji_Profile_%28loosercrop%29.jpg",
-      "likes": 2,
-      "id": 3
     }
   ],
   "comments": [
@@ -44,6 +38,51 @@
       "imageId": 1,
       "content": "Hes a good boy!!",
       "id": 5
+    },
+    {
+      "content": "nice dog",
+      "imageId": 1,
+      "id": 16
+    },
+    {
+      "content": "nice tati",
+      "imageId": 1,
+      "id": 17
+    },
+    {
+      "content": "nice dog",
+      "imageId": 1,
+      "id": 18
+    },
+    {
+      "content": "bad dog",
+      "imageId": 1,
+      "id": 19
+    },
+    {
+      "content": "nice tati",
+      "imageId": 1,
+      "id": 20
+    },
+    {
+      "content": "hello",
+      "imageId": 1,
+      "id": 21
+    },
+    {
+      "content": "nice dog",
+      "imageId": 1,
+      "id": 22
+    },
+    {
+      "content": "blabla",
+      "imageId": 1,
+      "id": 23
+    },
+    {
+      "content": "hello",
+      "imageId": 1,
+      "id": 24
     }
   ]
 }
